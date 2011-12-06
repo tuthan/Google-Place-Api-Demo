@@ -22,7 +22,7 @@ public class PlaceRequest {
 	private static final HttpTransport transport = new ApacheHttpTransport();
 	
 	// Fill in the API key you want to use.
-	private static final String API_KEY = "Your key here";
+	private static final String API_KEY = "AIzaSyCRmej3hzfD4HeYcjO4yjZRSrYxhq_OuuQ";
 	private static final String LOG_KEY = "GGPlace";
 	// The different Places API endpoints.
 	private static final String PLACES_SEARCH_URL =  "https://maps.googleapis.com/maps/api/place/search/json?";
@@ -144,6 +144,7 @@ public class PlaceRequest {
 		    headers.setApplicationName("Google-Places-DemoApp");
 		    request.setHeaders(headers);
 		    JsonHttpParser parser = new JsonHttpParser(new JacksonFactory()) ;
+		    
 		    //JsonHttpParser.builder(new JacksonFactory());
 		    //parser.jsonFactory = new JacksonFactory();
 		    request.addParser(parser);
