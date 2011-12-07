@@ -52,16 +52,17 @@ public class PlaceRequest {
 	public PlacesList performSearch() throws Exception {
 		try {
 			Log.v(LOG_KEY, "Start Search");
-			String reqUrl = PLACES_SEARCH_URL+"location="+latitude+","+longitude+"&radius=500&sensor=false&key="+API_KEY;
+			GenericUrl reqUrl = new GenericUrl(PLACES_SEARCH_URL);
+			reqUrl.put("key", API_KEY);
+			reqUrl.put("location", latitude + "," + longitude);
+			reqUrl.put("radius", 500);
+			reqUrl.put("sensor", "false");
 			Log.v(LOG_KEY, "url= " + reqUrl);
 			HttpRequestFactory httpRequestFactory = createRequestFactory(transport);
-			HttpRequest request = httpRequestFactory.buildGetRequest(new GenericUrl(reqUrl));
+			HttpRequest request = httpRequestFactory.buildGetRequest(reqUrl);
 			
-			//method request.url.put can't be use in @version 1.6.0-beta
-			/*request.url.put("key", API_KEY);
-			request.url.put("location", latitude + "," + longitude);
-			request.url.put("radius", 500);
-			request.url.put("sensor", "false");*/
+			
+			
 			
 			
 				Log.v(LOG_KEY, request.execute().parseAsString());							
